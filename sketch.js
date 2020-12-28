@@ -56,6 +56,7 @@ function setup(){
 function draw(){
     background("lightblack");
     Engine.update(engine);
+    slingshot.display();
     fill ("lightblue");
     block8.display();
     block9.display();
