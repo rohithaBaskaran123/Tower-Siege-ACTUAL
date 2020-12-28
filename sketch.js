@@ -4,8 +4,9 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 
-polygon = Bodies.circle(50,200,20);;
-World.add(world,polygon);
+
+
+
 
 function preload(){}
 
@@ -13,6 +14,7 @@ function setup(){
     createCanvas(800,400);
     engine= Engine.create();
     world = engine.world;
+    
     block8 = new Box (630,195,30,40);
     block9 = new Box (660,195,30,40);
     block10 = new Box (690,195,30,40);
@@ -47,8 +49,9 @@ function setup(){
 
     ground1 = new Ground (690,220,175,10);
     ground2 = new Ground (390,355,250,10)
-//polygon = Bodies.circle(50,200,20);
-//World.add(world,polygon);
+polygon = Bodies.circle(50,200,20);
+World.add(world,polygon);
+console.log(polygon);
     slingshot = new SlingShot(polygon.body,{x:50, y:200});
 
 }
@@ -101,15 +104,13 @@ fill ("gold");
     polygon.display();
 }
 function mouseDragged(){
-    if (gameState=="launched"){
+    
         Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
-    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
-    gameState = "launched";
 }
 
 function keyPressed(){
