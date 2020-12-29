@@ -9,7 +9,7 @@ const Body = Matter.Body;
 
 
 function preload(){}
-
+ply_img = loadImage("polygon.png");
 function setup(){
     createCanvas(800,400);
     engine= Engine.create();
@@ -52,7 +52,7 @@ function setup(){
 polygon = Bodies.circle(50,200,20);
 World.add(world,polygon);
 console.log(polygon);
-    slingshot = new SlingShot(polygon.body,{x:50, y:200});
+    slingshot = new SlingShot(this.polygon,{x:50, y:200});
 
 }
 
@@ -101,11 +101,12 @@ fill ("turquoise");
     block200.display();
     block209.display();
 fill ("gold");
-    polygon.display();
+imageMode (CENTER)
+image(ply_img, polygon.position.x, polygon.position.y,40,40)
 }
 function mouseDragged(){
     
-        Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
+        Matter.Body.setPosition(this.polygon, {x: mouseX , y: mouseY});
 }
 
 
@@ -115,6 +116,6 @@ function mouseReleased(){
 
 function keyPressed(){
     if(keyCode === 32){
-       slingshot.attach(bird.body);
+       slingshot.attach(this.polygon);
     }
 }
