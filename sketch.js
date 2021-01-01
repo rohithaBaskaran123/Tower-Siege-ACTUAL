@@ -5,11 +5,12 @@ const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 
 
+var slingshot;
 
 
-
-function preload(){}
+function preload(){
 ply_img = loadImage("polygon.png");
+}
 function setup(){
     createCanvas(800,400);
     engine= Engine.create();
@@ -49,16 +50,19 @@ function setup(){
 
     ground1 = new Ground (690,220,175,10);
     ground2 = new Ground (390,355,250,10)
-polygon = Bodies.circle(50,200,20);
+polygon = Bodies.circle(100,200,20);
 World.add(world,polygon);
 console.log(polygon);
-    slingshot = new SlingShot(this.polygon,{x:50, y:200});
+    slingshot = new SlingShot(this.polygon,{x:100, y:200});
 
 }
 
 function draw(){
-    background("lightblack");
+    background("black");
     Engine.update(engine);
+    fill("white");
+    text ("Drag the Hexagonal stone and then release it to hit the blocks",75,50);
+    
     slingshot.display();
     fill ("lightblue");
     block8.display();
